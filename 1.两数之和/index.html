@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>两数之和</title>
+    <style>
+        img {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>题目</h3>
+    <div>
+        <img src="./题目.png" alt="">
+    </div>
+    <div id="result"></div>
+    <h3>结果</h3>
+    <div>
+        <img src="./结果.png" alt="">
+    </div>
+    <script>
+        /**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
+        var twoSum = function (nums, target) {
+            for (let i = 0; i < nums.length; i++) {
+                let result = target - nums[i];
+                let resultIndex = null;
+                let resultIndexArr = indexOf(nums, result);
+                if (resultIndexArr.length) {
+                    if (resultIndexArr[0] !== i) {
+                        return [i, resultIndexArr[0]]
+                    } else if (resultIndexArr.length > 1) {
+                        return [i, resultIndexArr[1]]
+                    }
+                }
+            }
+        };
+
+        function indexOf(arr, item) {
+            var results = [],
+                len = arr.length,
+                pos = 0;
+            while (pos < len) {
+                pos = arr.indexOf(item, pos);    //从pos处开始查询下一个元素所在的位置
+                if (pos == -1) break;
+                results.push(pos);
+                pos++;
+            }
+            return results;
+        }
+        let res = twoSum([2, 7, 11, 15], 9);
+        document.querySelector('#result').innerHTML = res;
+    </script>
+</body>
+
+</html>

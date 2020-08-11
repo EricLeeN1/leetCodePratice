@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>整数翻转</title>
+    <style>
+        img {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>题目</h3>
+    <div>
+        <img src="./题目.png" alt="">
+    </div>
+    <div id="result"></div>
+    <h3>结果</h3>
+    <div>
+        <img src="./结果.png" alt="">
+    </div>
+    <script>
+        /**
+         * * @param {number} x
+         * * @return {number}
+         * */
+        let reverse = function (x) {
+            // 字符串化，然后拆分为数组，数组reverse，拼接。-0处理
+            const posOrNeg = x > 0;
+            x = posOrNeg ? x : -x
+            let str = x.toString();
+            let arr = str.split('');
+            arr.reverse();
+            str = arr.join('');
+            let num = str - 0;
+            let result = posOrNeg ? num : -num
+            return (rangeCheck(result) ? (result) : 0)
+        };
+
+        let rangeCheck = (x) => {
+            return - Math.pow(2, 31) < x && x < Math.pow(2, 31) - 1
+        }
+        let res = reverse(-123);
+        document.querySelector('#result').innerHTML = res;
+    </script>
+</body>
+
+</html>
