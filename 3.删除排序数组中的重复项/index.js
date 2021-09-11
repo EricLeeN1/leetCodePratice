@@ -3,16 +3,9 @@
  * @return {number}
  */
 var removeDuplicates = function (nums) {
-    var count = 0;
-    var n = nums.length;
-    for (let i = 1; i < n; i++) {
-        if (nums[i] != nums[i - 1]) {
-            nums[i - count] = nums[i]
-        } else {
-            count++;
-        }
-    }
-    return n - count;
+  console.log([...new Set(nums)]);
+  return new Set(nums).size;
 };
 
-removeDuplicates([1, 1, 2])
+const arr = [1, 1, 2];
+console.log(removeDuplicates(arr));

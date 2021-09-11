@@ -1,63 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>两数之和</title>
     <style>
-        img {
-            display: block;
-        }
+      img {
+        display: block;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <h3>题目</h3>
     <div>
-        <img src="./题目.png" alt="">
+      <img src="./题目.png" alt="" />
     </div>
     <div id="result"></div>
     <h3>结果</h3>
     <div>
-        <img src="./结果.png" alt="">
+      <img src="./结果.png" alt="" />
     </div>
     <script>
-        /**
- * @param {number[]} nums
- * @param {number} target
- * @return {number[]}
- */
-        var twoSum = function (nums, target) {
-            for (let i = 0; i < nums.length; i++) {
-                let result = target - nums[i];
-                let resultIndex = null;
-                let resultIndexArr = indexOf(nums, result);
-                if (resultIndexArr.length) {
-                    if (resultIndexArr[0] !== i) {
-                        return [i, resultIndexArr[0]]
-                    } else if (resultIndexArr.length > 1) {
-                        return [i, resultIndexArr[1]]
-                    }
-                }
-            }
-        };
-
-        function indexOf(arr, item) {
-            var results = [],
-                len = arr.length,
-                pos = 0;
-            while (pos < len) {
-                pos = arr.indexOf(item, pos);    //从pos处开始查询下一个元素所在的位置
-                if (pos == -1) break;
-                results.push(pos);
-                pos++;
-            }
-            return results;
+      /**
+       * @param {number[]} nums
+       * @param {number} target
+       * @return {number[]}
+       */
+      var twoSum = function (nums, target) {
+        let map = new Map();
+        for (let i = 0, len = nums.length; i < len; i++) {
+          let key = target - nums[i];
+          if (map.has(key)) {
+            return [map.get(key), i];
+          }
+          map.set(nums[i], i);
         }
-        let res = twoSum([2, 7, 11, 15], 9);
-        document.querySelector('#result').innerHTML = res;
-    </script>
-</body>
+        return arr;
 
+        // 从第一位开始算 初始值等于nums[0],res = target - nums[0] , 数组中包含此数时，才寻找， 可以用从后往前数的方式数
+        // 如果 nums[i] = res ，说明两个值类似3+3=6这种情况，需要判断indexof>i
+        // 如果不等于只需要找到index即可
+      };
+      let res = twoSum([3, 3], 6);
+      document.querySelector("#result").innerHTML = res;
+    </script>
+  </body>
 </html>
